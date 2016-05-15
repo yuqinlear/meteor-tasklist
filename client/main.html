@@ -1,0 +1,41 @@
+<head>
+  <title>simple</title>
+</head>
+
+<body>
+  {{> tasks}}
+
+
+  {{> info}}
+</body>
+
+<template name="tasks">
+    {{> loginButtons}}
+    <h1>Add Task</h1>
+    {{#if currentUser}}
+        <form class="add-task">
+            <label>Task Name</label>
+            <input type="text" name="name" placeholder="Add task" />
+            <input type="submit" value="submit" />
+        </form>
+    {{else}}
+        <p>Please log in to add tasks</p>
+    {{/if}}
+    <hr/>
+    <h3>Tasks</h3>
+    <ul>
+        {{#each tasks}}
+                <li>{{name}} {{#if currentUser}}  <a href="#" class="delete-task">X</a>    {{/if}}</li>
+        {{/each}}
+    </ul>
+</template>
+
+<template name="info">
+  <h2>Learn Meteor!</h2>
+  <ul>
+    <li><a href="https://www.meteor.com/try">Do the Tutorial</a></li>
+    <li><a href="http://guide.meteor.com">Follow the Guide</a></li>
+    <li><a href="https://docs.meteor.com">Read the Docs</a></li>
+    <li><a href="https://forums.meteor.com">Discussions</a></li>
+  </ul>
+</template>
